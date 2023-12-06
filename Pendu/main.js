@@ -74,6 +74,37 @@ function verifierCorrespondance() {
     return false;
 }
 
+// Généré par chat gpt. test pour conversion de chaque lettre du mot (motAsplit) en li + ajout de id. (class = possible ?)
+ // Liste de mots
+ var motss = ["chat", "chien", "oiseau", "poisson"];
+
+ // Choix d'un mot au hasard
+ var motChoisi = motss[Math.floor(Math.random() * motss.length)];
+
+ // Sélection de l'ul où les balises li seront ajoutées
+ var maListe = document.getElementById('maListe');
+
+ // Parcours de chaque lettre du mot et création d'une balise li
+ for (var i = 0; i < motChoisi.length; i++) {
+     var lettre = motChoisi[i];
+
+     // Création d'une balise li
+     var li = document.createElement('li');
+
+     // Ajout du texte de la lettre à la balise li
+     li.textContent = lettre;
+
+     // Ajout des identifiants aux balises li
+     li.id = lettre;
+     li.id = 'test';
+     li.id = 'caché';     
+     li.setAttribute('data-hidden', 'true'); // Deuxième identifiant (hidden)
+     li.setAttribute('data-lettre', lettre);  // Troisième identifiant
+
+     // Ajout de la balise li à l'ul
+     maListe.appendChild(li);
+ }
+
 
 // Problème a régler : motAsplit dans derniere function 'is not defined', definir motAsplit à l'ext de sa fonction sans impact négatif sur le code.
 
