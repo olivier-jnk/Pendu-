@@ -75,6 +75,7 @@ function verifierCorrespondance() {
 }
 
 // Généré par chat gpt. test pour conversion de chaque lettre du mot (motAsplit) en li + ajout de id. (class = possible ?)
+// La classe définira si la lettre serait visible ou non + caché par un trait.
  // Liste de mots
  var motss = ["chat", "chien", "oiseau", "poisson"];
 
