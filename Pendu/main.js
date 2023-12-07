@@ -106,3 +106,5 @@ function verifierCorrespondance() {
      // Ajout de la balise li à l'ul
      maListe.appendChild(li);
  }
+
+// Trouver moyen pour cacher le mot COMPLETEMENT, meme dans la fenêtre inspecter.
