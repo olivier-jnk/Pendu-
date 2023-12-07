@@ -1,0 +1,23 @@
+ul{
+    display: flex;
+    gap: 10px;
+    list-style-type: none;
+}
+
+li{
+    visibility: hidden;
+  }
+
+li#visible{
+    visibility: visible;
+}
+
+  /* Afficher un petit trait noir à la place */
+  li#hidden::before {
+    visibility: visible;
+    content: "\2022"; /* Utilisation du caractère Unicode pour le petit trait noir */
+    display: block;
+    border-bottom: 2px solid black; /* Largeur et couleur du trait noir */
+    margin-bottom: 5px; /* Marge en bas du trait pour l'espace */
+}
+  
