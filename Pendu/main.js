@@ -107,6 +107,6 @@ function verifierCorrespondance() {
 
 
 //  mettre les accents sur les mots ? sans que ca impacte le script. quand meme plus cool avec les accents, sinon ca porte a confusion.
-// mettre que des mots peu courants inclure a la fin une description du mot, voir de ses origines...
+// mettre mots peu courants ? et inclure a la fin (game over (win ou loose)) une description du mot voir ses origines... ca peut etre intéressant.
 // Score du joueur.
 // Mettre systeme d'indice ?
