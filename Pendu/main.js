@@ -25,8 +25,6 @@ function motChoix() {
   return motAsplit;
 }
 
-motAsplit = motChoix ();
-
 
 
 // Definir une liste de mots pour le pendu
