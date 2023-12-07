@@ -22,9 +22,10 @@ function choisirMotAleatoire(mots) {
 function motChoix() {
   let motChoisi = choisirMotAleatoire(mots);
   let motAsplit = motChoisi.split('')
-  
-  console.log("Mot choisi aléatoirement :", motAsplit);
+  return motAsplit;
 }
+
+motAsplit = motChoix ();
 
 
 
