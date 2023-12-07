@@ -6,6 +6,21 @@ document.getElementById('play').addEventListener('click', () => {
 let partie = "off"
 let vies = 7
 
+// Definir une liste de mots pour le pendu
+let mots = [ 
+  "éphémère", "quintessence", "luminiscence", "ubiquité", "syzygie",
+  "effervescent", "éthéré", "sélénite", "alacrité", "vernissage",
+  "kaleidoscope", "melliflue", "équivoque", "palimpseste", "onomatopée",
+  "ubuesque", "capricieux", "insouciance", "éclatant", "nacré",
+  "flibustier", "effluve", "opalescent", "sibyllin", "quasar",
+  "sérénité", "symbiose", "volupté", "iridescence", "intrication",
+  "vagabond", "zenith", "incandescent", "chiaroscuro", "labyrinthe",
+  "pétillement", "rhizome", "oxymore", "éclipsant", "pyrrhique",
+  "infini", "écliptique", "nébuleuse", "volubile", "lithosphère",
+  "plénitude", "effluves", "éphéméride", "atemporel", "pavonner"
+];
+
+
 
 
 function choisirMotAleatoire(mots) {
@@ -24,22 +39,10 @@ function motChoix() {
   let motAsplit = motChoisi.split('')
   return motAsplit;
 }
+motAsplit = motChoix();
 
 
 
-// Definir une liste de mots pour le pendu
-let mots = [ 
-  "éphémère", "quintessence", "luminiscence", "ubiquité", "syzygie",
-  "effervescent", "éthéré", "sélénite", "alacrité", "vernissage",
-  "kaleidoscope", "melliflue", "équivoque", "palimpseste", "onomatopée",
-  "ubuesque", "capricieux", "insouciance", "éclatant", "nacré",
-  "flibustier", "effluve", "opalescent", "sibyllin", "quasar",
-  "sérénité", "symbiose", "volupté", "iridescence", "intrication",
-  "vagabond", "zenith", "incandescent", "chiaroscuro", "labyrinthe",
-  "pétillement", "rhizome", "oxymore", "éclipsant", "pyrrhique",
-  "infini", "écliptique", "nébuleuse", "volubile", "lithosphère",
-  "plénitude", "effluves", "éphéméride", "atemporel", "pavonner"
-];
 
 
 function commencerPartie () {
@@ -63,8 +66,17 @@ function verifierCorrespondance() {
     for (let i = 0; i < motAsplit.length; i++) {
         // Vérifier si la lettre d'entrée correspond à une lettre dans le tableau
         if (lettreEntree === motAsplit[i]) {
-            console.log(`La lettre ${lettreEntree} correspond à une lettre dans le tableau.`);
-            return true; // Correspondance trouvée, vous pouvez retourner true ou effectuer d'autres actions
+          var element = document.getElementById(motAsplit[i]);
+
+          // Modification de l'ID
+          element.id = 'visible'; 
+          // avec cette méthode de id = lettre puis si discovers id= 'visible' ca marche partiellement. MAIS
+          // Quand invisibilité, le before aussi... + quand lettre decouverte, que une qui apparait (sur les deux qu'il peut y avoir dans le mot.)
+          // Trouver autre chose
+          // pour la multiple coorrespondance revoir la boucle for de verification ci-dessus.
+
+          console.log(`La lettre ${lettreEntree} correspond à une lettre dans le tableau.`);
+          return true; // Correspondance trouvée, vous pouvez retourner true ou effectuer d'autres actions
         }
     }
 
@@ -73,20 +85,12 @@ function verifierCorrespondance() {
     return false;
 }
 
-// Généré par chat gpt. test pour conversion de chaque lettre du mot (motAsplit) en li + ajout de id. (class = possible ?)
-// La classe définira si la lettre serait visible ou non + caché par un trait.
- // Liste de mots
- var motss = ["chat", "chien", "oiseau", "poisson"];
-
- // Choix d'un mot au hasard
- var motChoisi = motss[Math.floor(Math.random() * motss.length)];
-
  // Sélection de l'ul où les balises li seront ajoutées
  var maListe = document.getElementById('maListe');
 
  // Parcours de chaque lettre du mot et création d'une balise li
- for (var i = 0; i < motChoisi.length; i++) {
-     var lettre = motChoisi[i];
+ for (var i = 0; i < motAsplit.length; i++) {
+     var lettre = motAsplit[i];
 
      // Création d'une balise li
      var li = document.createElement('li');
@@ -95,16 +99,10 @@ function verifierCorrespondance() {
      li.textContent = lettre;
 
      // Ajout des identifiants aux balises li
-     li.id = lettre;
-     li.id = 'test';
-     li.id = 'caché';     
-     li.setAttribute('data-hidden', 'true'); // Deuxième identifiant (hidden)
-     li.setAttribute('data-lettre', lettre);  // Troisième identifiant
-
+     
+    // li.id = 'hidden ' + lettre;     
+    li.id = lettre;
+     
      // Ajout de la balise li à l'ul
      maListe.appendChild(li);
  }
-
-
-// Problème a régler : motAsplit dans derniere function 'is not defined', definir motAsplit à l'ext de sa fonction sans impact négatif sur le code.
-
