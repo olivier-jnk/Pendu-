@@ -6,18 +6,37 @@ ul{
 
 li{
     visibility: hidden;
+    font-size: 20px;
+    font-display: flex;
+    
   }
 
 li#visible{
+  list-style-type: none;
     visibility: visible;
+    
+}
+
+li a{
+  font-size: 120px;
 }
 
   /* Afficher un petit trait noir à la place */
-  li#hidden::before {
+  li:after {
     visibility: visible;
-    content: "\2022"; /* Utilisation du caractère Unicode pour le petit trait noir */
-    display: block;
-    border-bottom: 2px solid black; /* Largeur et couleur du trait noir */
-    margin-bottom: 5px; /* Marge en bas du trait pour l'espace */
+    content: "\2022";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Largeur du trait */
+    height: 5px; /* Hauteur du trait */
+    background-color: black; /* Couleur du trait */
+    margin-bottom: 10px; /* Marge en bas du trait, ajustez selon vos besoins */
+}
+
+li#visible:after{
+  background-color: green;
 }
   
+
+/* Pb du petit point (avec after) (a cause du texte je crois) */
