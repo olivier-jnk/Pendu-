@@ -8,16 +8,12 @@ let vies = 7
 
 // Definir une liste de mots pour le pendu
 let mots = [ 
-  "éphémère", "quintessence", "luminiscence", "ubiquité", "syzygie",
-  "effervescent", "éthéré", "sélénite", "alacrité", "vernissage",
-  "kaleidoscope", "melliflue", "équivoque", "palimpseste", "onomatopée",
-  "ubuesque", "capricieux", "insouciance", "éclatant", "nacré",
-  "flibustier", "effluve", "opalescent", "sibyllin", "quasar",
-  "sérénité", "symbiose", "volupté", "iridescence", "intrication",
-  "vagabond", "zenith", "incandescent", "chiaroscuro", "labyrinthe",
-  "pétillement", "rhizome", "oxymore", "éclipsant", "pyrrhique",
-  "infini", "écliptique", "nébuleuse", "volubile", "lithosphère",
-  "plénitude", "effluves", "éphéméride", "atemporel", "pavonner"
+  "ephemere", "quintessence", "luminiscence", "ubiquite", "syzygie", "effervescent", "ethere", "selenite", "alacrite", "vernissage", 
+  "kaleidoscope", "melliflue", "equivoque", "palimpseste", "onomatopee", "ubuesque", "capricieux", "insouciance", "eclatant", "nacre", 
+  "flibustier", "effluve", "opalescent", "sibyllin", "quasar", "serenite", "symbiose", "volupte", "iridescence", "intrication", 
+  "vagabond", "zenith", "incandescent", "chiaroscuro", "labyrinthe", "petillement", "rhizome", "oxymore", "eclipsant", 
+  "pyrrhique", "infini", "ecliptique", "nebuleuse", "volubile", "lithosphere", "plenitude", "effluves", "ephemeride", 
+  "atemporel", "pavonner"
 ];
 
 
@@ -28,6 +24,7 @@ function choisirMotAleatoire(mots) {
       return "Aucun mot disponible";
   }
 
+  // Maybe revoir le random, y a moyen qu'il soit un peut pété.
   const indexAleatoire = Math.floor(Math.random() * mots.length);
   const motAleatoire = mots[indexAleatoire];
   return motAleatoire;
@@ -67,16 +64,17 @@ function verifierCorrespondance() {
         // Vérifier si la lettre d'entrée correspond à une lettre dans le tableau
         if (lettreEntree === motAsplit[i]) {
           var element = document.getElementById(motAsplit[i]);
-
+          
+          lettreEntree.class = 'validé';
           // Modification de l'ID
           element.id = 'visible'; 
           // avec cette méthode de id = lettre puis si discovers id= 'visible' ca marche partiellement. MAIS
           // Quand invisibilité, le before aussi... + quand lettre decouverte, que une qui apparait (sur les deux qu'il peut y avoir dans le mot.)
           // Trouver autre chose
-          // pour la multiple coorrespondance revoir la boucle for de verification ci-dessus.
+          // C'est bon pour la multiple correspondance (j'ai juste retiré le return true.)
+          // Nouveau problemes des mots avec accents dans la variable 'mots'.
 
           console.log(`La lettre ${lettreEntree} correspond à une lettre dans le tableau.`);
-          return true; // Correspondance trouvée, vous pouvez retourner true ou effectuer d'autres actions
         }
     }
 
@@ -107,4 +105,8 @@ function verifierCorrespondance() {
      maListe.appendChild(li);
  }
 
-// Trouver moyen pour cacher le mot COMPLETEMENT, meme dans la fenêtre inspecter.
+
+//  mettre les accents sur les mots ? sans que ca impacte le script. quand meme plus cool avec les accents, sinon ca porte a confusion.
+// mettre que des mots peu courants inclure a la fin une description du mot, voir de ses origines...
+// Score du joueur.
+// Mettre systeme d'indice ?
