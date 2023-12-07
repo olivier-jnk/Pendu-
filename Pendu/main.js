@@ -111,3 +111,11 @@ function verifierCorrespondance() {
 // Mettre systeme d'indice ?
 // tout implemeter dans function commencerPartie.
 // Dans partie boucle while(vies > 0)
+
+//A MODIFIER
+// Message lettre mauvaise meme si elle est correcte 
+// Point dans le after
+// Faire en sorte que meme dans 'inspecter' le mot soit caché.
+// Nettoyer l'interface (garder l'essentiel et commencer un design plus épuré.)
+// Mettre en place le systeme de 'vies'
+//...
