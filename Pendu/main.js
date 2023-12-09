@@ -96,14 +96,6 @@ function verifierCorrespondance() {
   
 }
 
-function modifClass () {
-
-  for (const i = 0; i < elementsWithEClass.length; i++) {
-    elementsWithEClass[i].classList.remove(motAsplit[i]);
-    elementsWithEClass[i].classList.add('visible');
-  }
-}
-
  // Sélection de l'ul où les balises li seront ajoutées
  let maListe = document.getElementById('maListe');
 
