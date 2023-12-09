@@ -111,14 +111,14 @@ function modifClass () {
 // avec return true fonctionne bien mais pas multi-correspondance et sans return, si lettre a correspondance elle s'affiche mais message comme quoi pas de correspondance, donc -1vies
 
  // Sélection de l'ul où les balises li seront ajoutées
- var maListe = document.getElementById('maListe');
+ let maListe = document.getElementById('maListe');
 
  // Parcours de chaque lettre du mot et création d'une balise li
- for (var i = 0; i < motAsplit.length; i++) {
-     var lettre = motAsplit[i];
+ for (let i = 0; i < motAsplit.length; i++) {
+     let lettre = motAsplit[i];
 
      // Création d'une balise li
-     var li = document.createElement('li');
+     let li = document.createElement('li');
 
      // Ajout du texte de la lettre à la balise li
      li.textContent = lettre;
