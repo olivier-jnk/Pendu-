@@ -1,15 +1,53 @@
-// Si le bouton play est cliqué : appeller la function commencerPartie();
-document.getElementById('play').addEventListener('click', () => {
-  commencerPartie();
+document.addEventListener('DOMContentLoaded', function() {
+
+  debutDePartie ();
 });
 
-function game() {
-  // Remplacez "nouvelle_page.html" par l'URL de la page vers laquelle vous souhaitez rediriger l'utilisateur
-  window.location.href = 'partie.html'
+// Si le bouton play est cliqué : appeller la function commencerPartie();
+document.getElementById('play').addEventListener('click', () => {
+  verifierCorrespondance ();
+  if (points === motAsplit.length){
+    console.log('gagné !')
+    window.location.href = "win.html";
+  }else if (vies < 1){
+    alert("perdu !")
+    window.location.href = "loose.html";
+
+  }
+
+});
+
+function debutDePartie () {
+
+  motPop ();
+
+  
+
 }
+
+// document.getElementById('play').addEventListener('click', () => {
+//   commencerPartie();
+//   // window.location.href = 'partie.html';
+// });
+
+// window.onload = function () {
+//   document.getElementById('letterGuess').addEventListener('click', () => {
+//       verifierCorrespondance();
+//   });
+// };
+
+// document.getElementById('letterGuess').addEventListener('click', () => {
+//   verifierCorrespondance ();
+// });
+
+// function game() {
+//   // Remplacez "nouvelle_page.html" par l'URL de la page vers laquelle vous souhaitez rediriger l'utilisateur
+//   window.location.href = 'partie.html'
+// }
 
 let partie = "off"
 let vies = 7
+points = 0;
 
 // Definir une liste de mots pour le pendu
 let mots = [ 
@@ -39,19 +77,21 @@ function motChoix() {
   return motAsplit;
 }
 motAsplit = motChoix();
+console.log(motAsplit)
 // Peut etre pas la meilleure maniere de modifier la portée de motAsplit
 // (motAsplit est la version finale du mot sélectionné (soigneusement choisi au hasard, puis eclaté dans un tableau.))
 // Moyen peut etre de regrouper les deux fonction précédentes ?
 
 function commencerPartie () {
+  console.log("salut")
+  // motPop ();
+  // motPop ();
+  // verifierCorrespondance();
 
-  motPop ();
-  verifierCorrespondance();
-
-  if(vies < 1){
-    alert('PERDU !');
-    return false;
-  }
+  // if(vies < 1){
+  //   alert('PERDU !');
+  //   return false;
+  // }
 }
 
 // const elementsWithEClass = document.getElementsByClassName(motAsplit[i]);
@@ -59,7 +99,6 @@ function commencerPartie () {
 // Fonction pour vérifier la correspondance entre la lettre entrée par l'utilisateur et les lettres du motAsplit
 function verifierCorrespondance() {
   valeur1 = 0
-  console.log(valeur1)
   // let valeur = lavaleur ();
 
   lettreEntreeMS = prompt('Entrez une lettre !')
@@ -80,20 +119,18 @@ function verifierCorrespondance() {
       // element.add('visible')
       
       valeur1 = valeur1 + 1;
-      console.log(valeur1)
+      // console.log(valeur1)
+      points = points + 1;
 
-      var element = document.getElementById(motAsplit[i]);
+      let element = document.getElementById(motAsplit[i]);
       element.id = 'visible'
-
-      
     }
     
   }
 
   if (valeur1 > 0){
     valeur1 = 0;
-    console.log(valeur1)
-    console.log("c'est bon !")
+    console.log(points)
   }else {
     console.log(`La lettre ${lettreEntree} ne correspond à aucune lettre dans le tableau.`);
     vies = vies - 1; 
@@ -102,21 +139,23 @@ function verifierCorrespondance() {
   
 }
 
+
 function motPop () {
   // Sélection de l'ul où les balises li seront ajoutées
  let maListe = document.getElementById('maListe');
 
  // Parcours de chaque lettre du mot et création d'une balise li
  for (let i = 0; i < motAsplit.length; i++) {
-     let lettre = motAsplit[i];
+    let lettre = motAsplit[i];
 
-     // Création d'une balise li
-     let li = document.createElement('li');
+    // Création d'une balise li
+    let li = document.createElement('li');
 
+    li.textContent = lettre;
     li.id = lettre; // li.classList.add(lettre)
      
-     // Ajout de la balise li à l'ul
-     maListe.appendChild(li);
+    // Ajout de la balise li à l'ul
+    maListe.appendChild(li);
  }
 
   
@@ -129,3 +168,4 @@ function motPop () {
 // Mettre systeme d'indice ?
 // tout implemeter dans function commencerPartie.
 // Dans partie boucle while(vies > 0 et arraywin < motchoisi.lenght);
+// Verif si la personne rentre une phrase ou des caracteres speciaux. tout sera mieux avec le clavier de lettre directement.
