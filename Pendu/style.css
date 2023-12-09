@@ -11,6 +11,7 @@ li{
     
   }
 
+/* A modif en visible classe, quand le changement de classe fonctionnera. */
 li#visible{
   list-style-type: none;
     visibility: visible;
