@@ -104,11 +104,6 @@ function modifClass () {
   }
 }
 
-
-// Je crois que comme ya plus le return true ca envoie false aussi, car scan de tout le tableau. chq lettre scanné jusqu'a que correspondance soit trouvé. donc le probleme
-// C'est que si j'envoie a, il me retourne le premier a dans le mot ( si correspondance ) mais si il y en a un deuxieme il ne l'envoie pas.
-// avec return true fonctionne bien mais pas multi-correspondance et sans return, si lettre a correspondance elle s'affiche mais message comme quoi pas de correspondance, donc -1vies
-
  // Sélection de l'ul où les balises li seront ajoutées
  let maListe = document.getElementById('maListe');
 
@@ -136,12 +131,4 @@ function modifClass () {
 // Score du joueur.
 // Mettre systeme d'indice ?
 // tout implemeter dans function commencerPartie.
-// Dans partie boucle while(vies > 0);
-
-function letterPop (){
-
-  // Sélectionnez tous les éléments avec la classe 'e'
-
-
-}
-
+// Dans partie boucle while(vies > 0 et arraywin < motchoisi.lenght);
