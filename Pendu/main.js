@@ -3,6 +3,11 @@ document.getElementById('play').addEventListener('click', () => {
   commencerPartie();
 });
 
+function game() {
+  // Remplacez "nouvelle_page.html" par l'URL de la page vers laquelle vous souhaitez rediriger l'utilisateur
+  window.location.href = 'partie.html'
+}
+
 let partie = "off"
 let vies = 7
 
@@ -39,7 +44,8 @@ motAsplit = motChoix();
 // Moyen peut etre de regrouper les deux fonction précédentes ?
 
 function commencerPartie () {
-  
+
+  motPop ();
   verifierCorrespondance();
 
   if(vies < 1){
@@ -96,7 +102,8 @@ function verifierCorrespondance() {
   
 }
 
- // Sélection de l'ul où les balises li seront ajoutées
+function motPop () {
+  // Sélection de l'ul où les balises li seront ajoutées
  let maListe = document.getElementById('maListe');
 
  // Parcours de chaque lettre du mot et création d'une balise li
@@ -106,17 +113,15 @@ function verifierCorrespondance() {
      // Création d'une balise li
      let li = document.createElement('li');
 
-     // Ajout du texte de la lettre à la balise li
-     li.textContent = lettre;
-
-     // Ajout des identifiants aux balises li
-     
-    // li.id = 'hidden ' + lettre;     
     li.id = lettre; // li.classList.add(lettre)
      
      // Ajout de la balise li à l'ul
      maListe.appendChild(li);
  }
+
+  
+}
+ 
 
 //  mettre les accents sur les mots ? sans que ca impacte le script. quand meme plus cool avec les accents, sinon ca porte a confusion.
 // mettre que des mots peu courants inclure a la fin une description du mot, voir de ses origines...
