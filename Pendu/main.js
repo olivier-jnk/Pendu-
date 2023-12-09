@@ -20,30 +20,7 @@ document.getElementById('play').addEventListener('click', () => {
 function debutDePartie () {
 
   motPop ();
-
-  
-
 }
-
-// document.getElementById('play').addEventListener('click', () => {
-//   commencerPartie();
-//   // window.location.href = 'partie.html';
-// });
-
-// window.onload = function () {
-//   document.getElementById('letterGuess').addEventListener('click', () => {
-//       verifierCorrespondance();
-//   });
-// };
-
-// document.getElementById('letterGuess').addEventListener('click', () => {
-//   verifierCorrespondance ();
-// });
-
-// function game() {
-//   // Remplacez "nouvelle_page.html" par l'URL de la page vers laquelle vous souhaitez rediriger l'utilisateur
-//   window.location.href = 'partie.html'
-// }
 
 let partie = "off"
 let vies = 7
@@ -81,20 +58,6 @@ console.log(motAsplit)
 // Peut etre pas la meilleure maniere de modifier la portée de motAsplit
 // (motAsplit est la version finale du mot sélectionné (soigneusement choisi au hasard, puis eclaté dans un tableau.))
 // Moyen peut etre de regrouper les deux fonction précédentes ?
-
-function commencerPartie () {
-  console.log("salut")
-  // motPop ();
-  // motPop ();
-  // verifierCorrespondance();
-
-  // if(vies < 1){
-  //   alert('PERDU !');
-  //   return false;
-  // }
-}
-
-// const elementsWithEClass = document.getElementsByClassName(motAsplit[i]);
 
 // Fonction pour vérifier la correspondance entre la lettre entrée par l'utilisateur et les lettres du motAsplit
 function verifierCorrespondance() {
