@@ -40,3 +40,83 @@ li#visible:after{
   
 
 /* Pb du petit point (avec after) (a cause du texte je crois) */
+
+.pendu ul{
+  position: relative;
+  display: flex;
+}
+
+.pendu ul ol.un img{
+  position: absolute;
+  left: 8.3%;
+  bottom: 15%;
+  /* height: 596px;
+  width: 842px; */
+}
+
+.pendu ul ol.deux img{
+  position: absolute;
+  left: 16.3%;
+  bottom: 40%;
+  /* height: 596px;
+  width: 842px; */
+
+}
+
+.pendu ul ol.trois img{
+  position: absolute;
+  left: 20.3%;
+  bottom: 40%;
+  /* height: 596px;
+  width: 842px; */
+
+}
+
+.pendu ul ol.quatre img{
+  position: absolute;
+  left: 20.3%;
+  bottom: 27%;
+  /* height: 596px;
+  width: 842px; */
+}
+
+.pendu ul ol.cinq img{
+  position: absolute;
+  left: 20.3%;
+  bottom: 14%;
+  /* height: 596px;
+  width: 842px; */
+
+}
+
+.pendu ul ol.six img{
+  position: absolute;
+  left: 20.1%;
+  bottom: 15%;
+  /* height: 596px;
+  width: 842px; */
+
+}
+
+/* .pendu ul ol.sept img{
+  position: absolute;
+  left: 14%;
+  bottom: 20%;
+  height: 596px;
+  width: 842px;
+
+}
+//si activé, fait tout bugger... ( toutes les autres images disparaissent) a voir plus tard comment régler ca. + comment faire le responsive.
+
+.deux{
+
+  width: 842px;
+} */
+
+.pendu ul ol{
+  visibility: hidden;
+}
+
+.pendu ul ol.visible{
+  visibility: visible;
+}
