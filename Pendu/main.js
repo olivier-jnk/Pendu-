@@ -11,7 +11,7 @@ document.getElementById('play').addEventListener('click', () => {
     window.location.href = "win.html";
     console.log('votre score est de ' +score)
   }else if (vies < 1){
-    alert("perdu !")
+
     window.location.href = "loose.html";
 
   }
@@ -27,6 +27,7 @@ let partie = "off"
 let vies = 7
 points = 0;
 score = vies * 7;
+className = 0;
 
 
 // Definir une liste de mots pour le pendu
@@ -114,16 +115,29 @@ function verifierCorrespondance() {
   }else {
     console.log(`La lettre ${lettreEntree} ne correspond à aucune lettre dans le tableau.`);
     vies = vies - 1; 
-    addClass();
+    
     
     
     if (vies === 6) {
-      let className = "un";
-      addClass();
+      className = "un";
     }
-    if (vies === 5) {
-      let className = "deux"   
-      addClass();
+    else if (vies === 5) {
+      className = "deux"   
+    }
+    else if (vies === 4) {
+      className = "trois"   
+    }
+    else if (vies === 3) {
+      className = "quatre"   
+    }
+    else if (vies === 2) {
+      className = "cinq"   
+    }
+    else if (vies === 1) {
+      className = "six"   
+    }
+    else if (vies === 0) {
+      className = "sept"   
     }
     // la methode fonctionne MAIS ! si je continue avec cette methode je vais devoir creer 7 fonctions addClass, ca marchera tout de meme mais c'est tres répétitif et ca prend de la place
     // pour rien.
@@ -140,6 +154,8 @@ function verifierCorrespondance() {
     //   }
     //   addClass ();
     // }
+    
+    addClass();
 
   }
   
@@ -188,3 +204,5 @@ function motPop () {
 // tout implemeter dans function commencerPartie.
 // Dans partie boucle while(vies > 0 et arraywin < motchoisi.lenght);
 // Verif si la personne rentre une phrase ou des caracteres speciaux. tout sera mieux avec le clavier de lettre directement.
+// Jsp comment ca se fait mais si je rentre une lettre qui est deja rentrée et valide, cela ne fait rien. pas -1 vie, par contre si double mauvaise lettre, ca retire quand meme la vie
+// Sachant que je n'ai encore rien codé pour ca.
