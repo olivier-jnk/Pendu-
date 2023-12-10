@@ -9,6 +9,7 @@ document.getElementById('play').addEventListener('click', () => {
   if (points === motAsplit.length){
     console.log('gagné !')
     window.location.href = "win.html";
+    console.log('votre score est de ' +score)
   }else if (vies < 1){
     alert("perdu !")
     window.location.href = "loose.html";
@@ -25,6 +26,8 @@ function debutDePartie () {
 let partie = "off"
 let vies = 7
 points = 0;
+score = vies * 7;
+
 
 // Definir une liste de mots pour le pendu
 let mots = [ 
@@ -58,6 +61,20 @@ console.log(motAsplit)
 // Peut etre pas la meilleure maniere de modifier la portée de motAsplit
 // (motAsplit est la version finale du mot sélectionné (soigneusement choisi au hasard, puis eclaté dans un tableau.))
 // Moyen peut etre de regrouper les deux fonction précédentes ?
+
+function commencerPartie () {
+  console.log("salut")
+  // motPop ();
+  // motPop ();
+  // verifierCorrespondance();
+
+  // if(vies < 1){
+  //   alert('PERDU !');
+  //   return false;
+  // }
+}
+
+// const elementsWithEClass = document.getElementsByClassName(motAsplit[i]);
 
 // Fonction pour vérifier la correspondance entre la lettre entrée par l'utilisateur et les lettres du motAsplit
 function verifierCorrespondance() {
@@ -97,10 +114,49 @@ function verifierCorrespondance() {
   }else {
     console.log(`La lettre ${lettreEntree} ne correspond à aucune lettre dans le tableau.`);
     vies = vies - 1; 
+    addClass();
+    
+    
+    if (vies === 6) {
+      let className = "un";
+      addClass();
+    }
+    if (vies === 5) {
+      let className = "deux"   
+      addClass();
+    }
+    // la methode fonctionne MAIS ! si je continue avec cette methode je vais devoir creer 7 fonctions addClass, ca marchera tout de meme mais c'est tres répétitif et ca prend de la place
+    // pour rien.
+    // trouver une methode pour faire en sorte que le getelementbyclassname change automatiquement dans la fonction.
+    // c'est bon et cela s'est fait tres simplement. ah quoique
+
+    // Je pense aussi qu'il est egalement possible d'eviter de repeter tout le temps le if vies= 6,5,4,3,2,1,0. pareil je pense que ca va prendre trop de place alors qu'il y a tres 
+    // surement moyen de trouver une autre méthode peut etre avec une boucle for in et une variable qui se modifie a chq activation du grand else (celui qui met -1 vie.)
+    
+    // if (vies === 6){
+    //   function addClass (){
+    //     let classadd = document.getElementsByClassName('un')
+    //     classadd.classList.add('visible')
+    //   }
+    //   addClass ();
+    // }
 
   }
   
 }
+
+
+function addClass() {
+  let elements = document.getElementsByClassName(className);
+
+  if (elements.length > 0) {
+    elements[0].classList.add('visible');
+  } else {
+    console.error('Element with class "un" not found.');
+  }
+}
+// ne peut pas acceder a la className (variable.)
+
 
 
 function motPop () {
