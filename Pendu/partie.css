@@ -120,3 +120,7 @@ li#visible:after{
 .pendu ul ol.visible{
   visibility: visible;
 }
+
+#playerScore{
+  color: red;
+}
