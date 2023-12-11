@@ -47,9 +47,9 @@ function debutDePartie () {
 
 let partie = "off"
 let vies = 7
-points = 0;
-score = vies * 7;
-className = 0;
+var points = 0; // var *3
+var score = vies * 7;
+var className = 0;
 
 // Provioire (utile pour les tests)
 
