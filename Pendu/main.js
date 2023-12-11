@@ -7,9 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
 document.getElementById('play').addEventListener('click', () => {
   verifierCorrespondance ();
   if (points === motAsplit.length){
-    console.log('gagné !')
-    window.location.href = "win.html";
-    console.log('votre score est de ' +score)
+    winGame ();
   }else if (vies < 1){
 
     window.location.href = "loose.html";
@@ -17,6 +15,30 @@ document.getElementById('play').addEventListener('click', () => {
   }
 
 });
+
+// Fonction pour la victoire du joueur.
+function winGame () {
+
+  console.log('gagné !')
+  // window.location.href = "win.html";
+  // window.alert('votre score est de ' +score) 
+
+  showScore ();
+  // Fonction rejouer apres affichage du score.
+    
+  // force le alert, ca marche, mais pas ce que je souhaite.
+
+}
+
+function showScore () {
+
+  let playerScore = document.getElementById('playerScore')
+
+  playerScore.innerHTML = 'Votre score est de ' + score;
+  // Fonctionne mais pas si a pour but de s'effectuer sur le win.html. A voir pourquoi.
+  // de toute facon, surement retirer la redirection de page, lorsque win et/ou defaite. Tout se passe sur la meme page.
+
+}
 
 function debutDePartie () {
 
@@ -28,6 +50,21 @@ let vies = 7
 points = 0;
 score = vies * 7;
 className = 0;
+
+// Provioire (utile pour les tests)
+
+// function winGame () {
+//   // renvoie juste vers l'ecran game mais declenche pas vraiment la fonction win...
+//   // Creer une fonction win et loose. qui seront activé si et sinon...
+//   window.location.href = "win.html";
+//   window.alert('votre score est de ' +score)
+// }
+
+function looseGame () {
+  window.location.href = "loose.html";
+} 
+// 
+
 
 
 // Definir une liste de mots pour le pendu
@@ -206,3 +243,5 @@ function motPop () {
 // Verif si la personne rentre une phrase ou des caracteres speciaux. tout sera mieux avec le clavier de lettre directement.
 // Jsp comment ca se fait mais si je rentre une lettre qui est deja rentrée et valide, cela ne fait rien. pas -1 vie, par contre si double mauvaise lettre, ca retire quand meme la vie
 // Sachant que je n'ai encore rien codé pour ca.
+
+// Changer la win et loss
