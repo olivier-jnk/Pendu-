@@ -1,66 +1,19 @@
+// Remettre de l'ordre dans tout ce raffut. nettoyer commentaires et hiérarchie plus logique.
+
+// Des que la page charge lancer les deux fonctions.
 document.addEventListener('DOMContentLoaded', function() {
 
   debutDePartie ();
   createAlphabet ();
 });
 
-
-
-// Si le bouton play est cliqué : appeller la function commencerPartie();
-document.getElementById('play').addEventListener('click', () => {
-  verifierCorrespondance ();
-  if (points === motAsplit.length){
-    winGame ();
-  }else if (vies < 1){
-
-    window.location.href = "loose.html";
-  }
-
-});
-
-// document.getElementsByClassName('lettrea').addEventListener('click', () => {
-
-//   console.log('lettre cliquée')
-  
-// });
-
-// Probleme id = lettre et y a les id dans mot + alphabet... id unique.
-
-// Sélectionnez tous les éléments avec la classe "bouton-special"
-
-let test = document.querySelectorAll('.lettrea')
-console.log(test)
-
-// ...
-
-
-// const boutonsLettrea = document.querySelectorAll('.lettrea');
-// console.log(boutonsLettrea)
-
-// // Parcourez chaque bouton spécial et ajoutez un écouteur d'événements
-// boutonsLettrea.forEach(bouton => {
-//   bouton.addEventListener('click', () => {
-//     // Vérifiez si le bouton cliqué a la classe spécifique
-//     if (bouton.classList.contains('lettrea')) {
-//       // Faites quelque chose lorsque le bouton spécial est cliqué
-//       console.log('click');
-//       // Vous pouvez ajouter d'autres actions ici
-//     }
-//   });
-// });
-
-
 // Fonction pour la victoire du joueur.
 function winGame () {
   console.log('gagné !')
   // window.location.href = "win.html";
   // window.alert('votre score est de ' +score) 
-
   showScore ();
   // Fonction rejouer apres affichage du score.
-    
-  // force le alert, ca marche, mais pas ce que je souhaite.
-
 }
 
 function showScore () {
@@ -71,7 +24,6 @@ function showScore () {
 }
 
 function debutDePartie () {
-
   motPop ();
 }
 
@@ -82,33 +34,28 @@ var score = vies * 7;
 var className = 0;
 let alphabet = [];
 
+// Systeme de l'alphabet
+
 for (let i = 97; i <= 122; i++) {
   alphabet.push(String.fromCharCode(i));
 }
 
 console.log(alphabet);
 
-
-
 function createAlphabet () {
   let monAlphabet = document.getElementById('monAlphabet');
 
   for(i = 0; i < alphabet.length; i++){
 
+    
     let lettrea = alphabet[i];
+    let idletter = (lettrea +'l')
+    
 
-    // Création d'une balise li
-
-    // let li = document.createElement('li');
     let li = document.createElement('button');
 
-    // li.classList.add("lettrea");
-    
-    // li.classList.add("lettrea");
-    // li.id = (lettrea)
-
     li.classList.add('lettrea');
-    li.id = (lettrea + 'l') // ?
+    li.id = idletter // ?
 
     li.textContent = (lettrea)
      
@@ -116,10 +63,34 @@ function createAlphabet () {
   }
 }
 
-function letterClick () {
 
-}
 
+document.addEventListener('DOMContentLoaded', function() {
+  var boutons = document.querySelectorAll('.lettrea');
+
+  boutons.forEach(function(bouton) {
+    bouton.addEventListener('click', function() {
+
+      // monElementId = document.getElementById(idletter);
+      // console.log(monElementId)
+
+
+      valeurElementClique = bouton.textContent;
+
+      if (bouton.classList.contains('lettrea')){
+        verifierCorrespondance ();
+
+        if (points === motAsplit.length){
+          winGame ();
+        }else if (vies < 1){
+      
+          window.location.href = "loose.html";
+        }
+      }
+      
+    });
+  });
+});
 
 function looseGame () {
   window.location.href = "loose.html";
@@ -161,33 +132,23 @@ console.log(motAsplit)
 
 function commencerPartie () {
   console.log("salut")
-  // motPop ();
-  // motPop ();
-  // verifierCorrespondance();
-
-  // if(vies < 1){
-  //   alert('PERDU !');
-  //   return false;
-  // }
 }
 
-// const elementsWithEClass = document.getElementsByClassName(motAsplit[i]);
-
-// Fonction pour vérifier la correspondance entre la lettre entrée par l'utilisateur et les lettres du motAsplit
+// Fonction pour vérifier la correspondance entre la lettre cliquée et les lettres du motAsplit
 function verifierCorrespondance() {
   valeur1 = 0
   // let valeur = lavaleur ();
 
-  lettreEntreeMS = prompt('Entrez une lettre !')
-  lettreEntree = lettreEntreeMS.toLowerCase();
+  // lettreEntreeMS = prompt('Entrez une lettre !')
+  // lettreEntree = lettreEntreeMS.toLowerCase();
 
   for (let i = 0; i < motAsplit.length; i++) {
-    if (lettreEntree === motAsplit[i]) {
+    if (valeurElementClique === motAsplit[i]) {
       // const elementsWithEClass = document.getElementsByClassName(motAsplit[i]);
 
       // boucle for ici normalement
       
-      console.log(`La lettre ${lettreEntree} correspond à une lettre dans le tableau.`);
+      console.log(`La lettre ${valeurElementClique} correspond à une lettre dans le tableau.`);
       // return true;
       // const valeur = valeur + 1
 
@@ -201,7 +162,16 @@ function verifierCorrespondance() {
 
       let element = document.getElementById(motAsplit[i]);
       element.id = 'visible'
+      // bouton.className.add('vrai');
+
+      bonnelettre = document.getElementById(valeurElementClique + "l");
+      
+      bonnelettre.classList = [];
+      bonnelettre.classList.add('vrai')
+      // monElementId.classList.add('vrai');
     }
+    
+
     
   }
 
@@ -209,10 +179,11 @@ function verifierCorrespondance() {
     valeur1 = 0;
     console.log(points)
   }else {
-    console.log(`La lettre ${lettreEntree} ne correspond à aucune lettre dans le tableau.`);
+    console.log(`La lettre ${valeurElementClique} ne correspond à aucune lettre dans le tableau.`);
     vies = vies - 1; 
-    
-    
+    badLetter = document.getElementById(valeurElementClique + 'l');  
+    badLetter.classList = [];
+    badLetter.classList.add('faux')
     
     if (vies === 6) {
       className = "un";
@@ -235,28 +206,11 @@ function verifierCorrespondance() {
     else if (vies === 0) {
       className = "sept"   
     }
-    // la methode fonctionne MAIS ! si je continue avec cette methode je vais devoir creer 7 fonctions addClass, ca marchera tout de meme mais c'est tres répétitif et ca prend de la place
-    // pour rien.
-    // trouver une methode pour faire en sorte que le getelementbyclassname change automatiquement dans la fonction.
-    // c'est bon et cela s'est fait tres simplement. ah quoique
-
-    // Je pense aussi qu'il est egalement possible d'eviter de repeter tout le temps le if vies= 6,5,4,3,2,1,0. pareil je pense que ca va prendre trop de place alors qu'il y a tres 
-    // surement moyen de trouver une autre méthode peut etre avec une boucle for in et une variable qui se modifie a chq activation du grand else (celui qui met -1 vie.)
-    
-    // if (vies === 6){
-    //   function addClass (){
-    //     let classadd = document.getElementsByClassName('un')
-    //     classadd.classList.add('visible')
-    //   }
-    //   addClass ();
-    // }
-    
     addClass();
 
   }
   
 }
-
 
 function addClass() {
   let elements = document.getElementsByClassName(className);
@@ -268,7 +222,6 @@ function addClass() {
   }
 }
 // ne peut pas acceder a la className (variable.)
-
 
 
 function motPop () {
@@ -289,21 +242,18 @@ function motPop () {
     // Ajout de la balise li à l'ul
     maListe.appendChild(li);
  }
-
-  
 }
  
-
 //  mettre les accents sur les mots ? sans que ca impacte le script. quand meme plus cool avec les accents, sinon ca porte a confusion.
 // mettre que des mots peu courants inclure a la fin une description du mot, voir de ses origines...
 // Score du joueur.
 // Mettre systeme d'indice ?
 // tout implemeter dans function commencerPartie.
 // Dans partie boucle while(vies > 0 et arraywin < motchoisi.lenght);
-// Verif si la personne rentre une phrase ou des caracteres speciaux. tout sera mieux avec le clavier de lettre directement.
-// Jsp comment ca se fait mais si je rentre une lettre qui est deja rentrée et valide, cela ne fait rien. pas -1 vie, par contre si double mauvaise lettre, ca retire quand meme la vie
-// Sachant que je n'ai encore rien codé pour ca.
+
+// mettre des indications sur le score. est ce que c'est le score max... score cumulatifs avc l'enchainement des parties.
 
 // Changer la win et loss
 
-
+// Definition du mot 
+// meilleur design
