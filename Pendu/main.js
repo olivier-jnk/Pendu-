@@ -1,5 +1,3 @@
-// Remettre de l'ordre dans tout ce raffut. nettoyer commentaires et hiérarchie plus logique.
-
 // Des que la page charge lancer les deux fonctions.
 document.addEventListener('DOMContentLoaded', function() {
 
@@ -10,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // Fonction pour la victoire du joueur.
 function winGame () {
   console.log('gagné !')
+  popwin();
   // window.location.href = "win.html";
   // window.alert('votre score est de ' +score) 
   showScore ();
@@ -17,10 +16,10 @@ function winGame () {
 }
 
 function showScore () {
+  let score = vies * 7;
   let playerScore = document.getElementById('playerScore')
   playerScore.innerHTML = 'Votre score est de ' + score;
-  // Fonctionne mais pas si a pour but de s'effectuer sur le win.html. A voir pourquoi.
-  // de toute facon, surement retirer la redirection de page, lorsque win et/ou defaite. Tout se passe sur la meme page.
+  // le score est constamment de 49. Probleme dans le calcul du score qui se fait constamment avec le vies a 7
 }
 
 function debutDePartie () {
@@ -29,8 +28,8 @@ function debutDePartie () {
 
 let partie = "off"
 let vies = 7
+
 var points = 0; // var *3
-var score = vies * 7;
 var className = 0;
 let alphabet = [];
 
@@ -63,8 +62,6 @@ function createAlphabet () {
   }
 }
 
-
-
 document.addEventListener('DOMContentLoaded', function() {
   var boutons = document.querySelectorAll('.lettrea');
 
@@ -79,6 +76,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
       if (bouton.classList.contains('lettrea')){
         verifierCorrespondance ();
+        console.log(vies + 'vies')
+        // let score = vies * 7;
+        // console.log(score + 'score')
 
         if (points === motAsplit.length){
           winGame ();
@@ -169,10 +169,8 @@ function verifierCorrespondance() {
       bonnelettre.classList = [];
       bonnelettre.classList.add('vrai')
       // monElementId.classList.add('vrai');
-    }
-    
-
-    
+      
+    } 
   }
 
   if (valeur1 > 0){
@@ -243,17 +241,22 @@ function motPop () {
     maListe.appendChild(li);
  }
 }
- 
-//  mettre les accents sur les mots ? sans que ca impacte le script. quand meme plus cool avec les accents, sinon ca porte a confusion.
-// mettre que des mots peu courants inclure a la fin une description du mot, voir de ses origines...
-// Score du joueur.
-// Mettre systeme d'indice ?
-// tout implemeter dans function commencerPartie.
-// Dans partie boucle while(vies > 0 et arraywin < motchoisi.lenght);
 
-// mettre des indications sur le score. est ce que c'est le score max... score cumulatifs avc l'enchainement des parties.
+function popwin (){
+  document.getElementById('myModal').style.display = 'block';
+  document.body.style.overflow = 'hidden'; 
+}
 
-// Changer la win et loss
+document.getElementsByClassName('close')[0].addEventListener('click', function() {
+  document.getElementById('myModal').style.display = 'none';
+  document.body.style.overflow = 'auto'; // Rétablir le défilement de la page lorsque la fenêtre modale est fermée
+});
 
-// Definition du mot 
-// meilleur design
+// Fermer la fenêtre modale lorsque l'utilisateur clique en dehors de celle-ci
+// Surement retirer.
+window.addEventListener('click', function(event) {
+  if (event.target == document.getElementById('myModal')) {
+      document.getElementById('myModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+  }
+});
