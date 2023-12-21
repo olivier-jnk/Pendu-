@@ -260,3 +260,7 @@ window.addEventListener('click', function(event) {
       document.body.style.overflow = 'auto';
   }
 });
+
+// Definition du mot 
+// meilleur design !
+// popup win. avec 'vous avez gagné' score + fautes + rejouer + description du mot.
