@@ -279,11 +279,9 @@ function popwin (){
 
 document.getElementsByClassName('close')[0].addEventListener('click', function() {
   document.getElementById('myModal').style.display = 'none';
-  document.body.style.overflow = 'auto'; // Rétablir le défilement de la page lorsque la fenêtre modale est fermée
+  document.body.style.overflow = 'auto';
 });
 
-// Fermer la fenêtre modale lorsque l'utilisateur clique en dehors de celle-ci
-// Surement retirer.
 window.addEventListener('click', function(event) {
   if (event.target == document.getElementById('myModal')) {
       document.getElementById('myModal').style.display = 'none';
