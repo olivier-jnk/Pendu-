@@ -1,4 +1,5 @@
 // Remettre de l'ordre dans tout ce raffut. nettoyer commentaires et hiérarchie plus logique.
+// Pendu en prévisualisation semi-transparente, pour visualiser le dessin du pendu.
 
 // Des que la page charge lancer les deux fonctions.
 document.addEventListener('DOMContentLoaded', function() {
