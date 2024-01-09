@@ -87,7 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
           winGame ();
         }else if (vies < 1){
       
-          window.location.href = "loose.html";
+          alert('Le mot etait :' + motAsplit)
+          window.location.href = "partie.html";
         }
       }
       
@@ -95,9 +96,10 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-function looseGame () {
-  window.location.href = "loose.html";
-} 
+// function looseGame () {
+//   alert('le mot était: ' + motAsplit)
+//   // window.location.href = "loose.html";
+// } 
 // 
 
 // Definir une liste de mots pour le pendu
@@ -248,22 +250,21 @@ function motPop () {
 // mettre que des mots peu courants inclure a la fin une description du mot, voir de ses origines...
 // Score du joueur.
 // Mettre systeme d'indice ?
-// tout implemeter dans function commencerPartie.
-// Dans partie boucle while(vies > 0 et arraywin < motchoisi.lenght);
 
 // mettre des indications sur le score. est ce que c'est le score max... score cumulatifs avc l'enchainement des parties.
 
 // Changer la win et loss
 
-// aleatoire qui fait en sorte que si mot chosi deja pop il y a peu. choisit un autre mot.
+// aleatoire qui fait en sorte que si mot chosit deja pop il y a peu. choisit un autre mot.
 
-// Definition du mot 
+// Definition du mot + annonciation de celui-ci si défaite.
 // meilleur design !
 // popup win. avec 'vous avez gagné' score + fautes + rejouer + description du mot.
 
 // cacher le texte dans console. // faire en sorte que ce soit des barres simples sans le mot. et les lettres apparaissent si elles sont citées en fonction de leur assignement. ? faire au 
 // ... moins en sorte qu'il n'apparaisse pas dans le html, meme si il restera visible dans le js (liste de mots.) peut etre pas s'attarder sur ca, cela va prendre bcp de temps.
 // toute la partie design et responsive qui peut prendre pas mal de temps.
+// Possibilité de choisir un thème de mots.
 
 function popwin (){
   document.getElementById('myModal').style.display = 'block';
