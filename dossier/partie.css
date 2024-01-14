@@ -97,6 +97,14 @@ li.lettre#visible:after{
 
 /* Pb du petit point (avec after) (a cause du texte je crois) */
 
+/* .pendu .lependu img{
+  max-height: 50%;
+} */
+
+.pendu{
+  max-height: 60vh;
+}
+
 .pendu ul{
   position: relative;
   display: flex;

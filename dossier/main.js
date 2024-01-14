@@ -1,5 +1,4 @@
-// Remettre de l'ordre dans tout ce raffut. nettoyer commentaires et hiérarchie plus logique.
-// Pendu en prévisualisation semi-transparente, pour visualiser le dessin du pendu.
+// Remettre de l'ordre dans tout ce raffut.
 
 // Des que la page charge lancer les deux fonctions.
 document.addEventListener('DOMContentLoaded', function() {
@@ -12,17 +11,13 @@ document.addEventListener('DOMContentLoaded', function() {
 function winGame () {
   console.log('gagné !')
   popwin();
-  // window.location.href = "win.html";
-  // window.alert('votre score est de ' +score) 
   showScore ();
-  // Fonction rejouer apres affichage du score.
 }
 
 function showScore () {
   let score = vies * 7;
   let playerScore = document.getElementById('playerScore')
   playerScore.innerHTML = 'Votre score est de ' + score;
-  // le score est constamment de 49. Probleme dans le calcul du score qui se fait constamment avec le vies a 7
 }
 
 function debutDePartie () {
@@ -32,7 +27,7 @@ function debutDePartie () {
 let partie = "off"
 let vies = 7
 
-var points = 0; // var *3
+var points = 0; 
 var className = 0;
 let alphabet = [];
 
@@ -47,20 +42,13 @@ console.log(alphabet);
 function createAlphabet () {
   let monAlphabet = document.getElementById('monAlphabet');
 
-  for(i = 0; i < alphabet.length; i++){
-
-    
+  for(i = 0; i < alphabet.length; i++){   
     let lettrea = alphabet[i];
-    let idletter = (lettrea +'l')
-    
-
+    let idletter = (lettrea +'l')   
     let li = document.createElement('button');
-
     li.classList.add('lettrea');
     li.id = idletter // ?
-
-    li.textContent = (lettrea)
-     
+    li.textContent = (lettrea)     
     monAlphabet.appendChild(li);
   }
 }
@@ -70,10 +58,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
   boutons.forEach(function(bouton) {
     bouton.addEventListener('click', function() {
-
-      // monElementId = document.getElementById(idletter);
-      // console.log(monElementId)
-
 
       valeurElementClique = bouton.textContent;
 
@@ -85,22 +69,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (points === motAsplit.length){
           winGame ();
-        }else if (vies < 1){
-      
+        }else if (vies < 1){ 
           alert('Le mot etait :' + motAsplit)
           window.location.href = "partie.html";
         }
-      }
-      
+      }     
     });
   });
 });
-
-// function looseGame () {
-//   alert('le mot était: ' + motAsplit)
-//   // window.location.href = "loose.html";
-// } 
-// 
 
 // Definir une liste de mots pour le pendu
 let mots = [ 
@@ -117,7 +93,7 @@ function choisirMotAleatoire(mots) {
       return "Aucun mot disponible";
   }
 
-  // peut etre revoir le random, y a moyen qu'il soit pas fou.
+  // peut etre revoir le random.
   const indexAleatoire = Math.floor(Math.random() * mots.length);
   const motAleatoire = mots[indexAleatoire];
   return motAleatoire;
@@ -131,50 +107,26 @@ function motChoix() {
 }
 motAsplit = motChoix();
 console.log(motAsplit)
-// Peut etre pas la meilleure maniere de modifier la portée de motAsplit
-// (motAsplit est la version finale du mot sélectionné (soigneusement choisi au hasard, puis eclaté dans un tableau.))
+// pas meilleure manière pour recuperer motAsplit. le passer en paramètres ?
 // Moyen peut etre de regrouper les deux fonction précédentes ?
-
-function commencerPartie () {
-  console.log("salut")
-}
 
 // Fonction pour vérifier la correspondance entre la lettre cliquée et les lettres du motAsplit
 function verifierCorrespondance() {
   valeur1 = 0
-  // let valeur = lavaleur ();
-
-  // lettreEntreeMS = prompt('Entrez une lettre !')
-  // lettreEntree = lettreEntreeMS.toLowerCase();
-
   for (let i = 0; i < motAsplit.length; i++) {
-    if (valeurElementClique === motAsplit[i]) {
-      // const elementsWithEClass = document.getElementsByClassName(motAsplit[i]);
-
-      // boucle for ici normalement
-      
+    if (valeurElementClique === motAsplit[i]) {    
       console.log(`La lettre ${valeurElementClique} correspond à une lettre dans le tableau.`);
-      // return true;
-      // const valeur = valeur + 1
 
-      // let element = document.getElementsByClassName(motAsplit[i]);
-      // element.remove()
-      // element.add('visible')
-      
       valeur1 = valeur1 + 1;
-      // console.log(valeur1)
       points = points + 1;
 
       let element = document.getElementById(motAsplit[i]);
       element.id = 'visible'
-      // bouton.className.add('vrai');
 
       bonnelettre = document.getElementById(valeurElementClique + "l");
       
       bonnelettre.classList = [];
-      bonnelettre.classList.add('vrai')
-      // monElementId.classList.add('vrai');
-      
+      bonnelettre.classList.add('vrai')     
     } 
   }
 
@@ -183,7 +135,8 @@ function verifierCorrespondance() {
     console.log(points)
   }else {
     console.log(`La lettre ${valeurElementClique} ne correspond à aucune lettre dans le tableau.`);
-    vies = vies - 1; 
+    // vies = vies - 1; 
+    vies -= 1;
     badLetter = document.getElementById(valeurElementClique + 'l');  
     badLetter.classList = [];
     badLetter.classList.add('faux')
@@ -210,9 +163,7 @@ function verifierCorrespondance() {
       className = "sept"   
     }
     addClass();
-
-  }
-  
+  } 
 }
 
 function addClass() {
@@ -224,8 +175,6 @@ function addClass() {
     console.error('Element with class "un" not found.');
   }
 }
-// ne peut pas acceder a la className (variable.)
-
 
 function motPop () {
   // Sélection de l'ul où les balises li seront ajoutées
@@ -235,7 +184,6 @@ function motPop () {
  for (let i = 0; i < motAsplit.length; i++) {
     let lettre = motAsplit[i];
 
-    // Création d'une balise li
     let li = document.createElement('li');
 
     li.textContent = lettre;
@@ -245,26 +193,6 @@ function motPop () {
     maListe.appendChild(li);
  }
 }
- 
-//  mettre les accents sur les mots ? sans que ca impacte le script. quand meme plus cool avec les accents, sinon ca porte a confusion.
-// mettre que des mots peu courants inclure a la fin une description du mot, voir de ses origines...
-// Score du joueur.
-// Mettre systeme d'indice ?
-
-// mettre des indications sur le score. est ce que c'est le score max... score cumulatifs avc l'enchainement des parties.
-
-// Changer la win et loss
-
-// aleatoire qui fait en sorte que si mot chosit deja pop il y a peu. choisit un autre mot.
-
-// Definition du mot + annonciation de celui-ci si défaite.
-// meilleur design !
-// popup win. avec 'vous avez gagné' score + fautes + rejouer + description du mot.
-
-// cacher le texte dans console. // faire en sorte que ce soit des barres simples sans le mot. et les lettres apparaissent si elles sont citées en fonction de leur assignement. ? faire au 
-// ... moins en sorte qu'il n'apparaisse pas dans le html, meme si il restera visible dans le js (liste de mots.) peut etre pas s'attarder sur ca, cela va prendre bcp de temps.
-// toute la partie design et responsive qui peut prendre pas mal de temps.
-// Possibilité de choisir un thème de mots.
 
 function popwin (){
   document.getElementById('myModal').style.display = 'block';
@@ -282,3 +210,19 @@ window.addEventListener('click', function(event) {
       document.body.style.overflow = 'auto';
   }
 });
+
+//Mot qui s'affiche à la fin avec une description, voir des illustration... Si la personne perd mais si elle gagne aussi. 
+// Au début afficher juste le mot. et la personne peut choisir de voir la description.
+
+//Indications sur le score. + score cumulé, enchainement de partie ?
+
+// choix de theme de mot au début du jeu.
+
+//Modifier le design ? du pendu, la taille qu'il prend. et ajouter prévisualisation semi-transparente.
+
+//
+ 
+//  mettre les accents sur les mots ?
+
+// aleatoire qui fait en sorte que si mot chosit deja pop il y a peu. choisit un autre mot.
+// Cacher txt console et essayer de camouffler au mieux la reponse dans le inspecter ?
