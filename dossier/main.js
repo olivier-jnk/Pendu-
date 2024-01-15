@@ -34,8 +34,6 @@ for (let i = 97; i <= 122; i++) {
   alphabet.push(String.fromCharCode(i));
 }
 
-console.log(alphabet);
-
 function createAlphabet () {
   let monAlphabet = document.getElementById('monAlphabet');
 
@@ -67,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (points === motAsplit.length){
           winGame ();
         }else if (vies < 1){ 
-          alert('Le mot etait :' + motAsplit)
+          alert('Le mot etait : ' + motAsplit.join)
           window.location.href = "partie.html";
         }
       }     
@@ -101,7 +99,7 @@ function motChoix() {
   return motAsplit;
 }
 motAsplit = motChoix();
-console.log(motAsplit)
+// console.log(motAsplit)
 // pas meilleure manière pour recuperer motAsplit. le passer en paramètres ?
 // Moyen peut etre de regrouper les deux fonction précédentes ?
 
@@ -130,7 +128,6 @@ function verifierCorrespondance() {
     console.log(points)
   }else {
     console.log(`La lettre ${valeurElementClique} ne correspond à aucune lettre dans le tableau.`);
-    // vies = vies - 1; 
     vies -= 1;
     badLetter = document.getElementById(valeurElementClique + 'l');  
     badLetter.classList = [];

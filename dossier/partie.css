@@ -93,13 +93,6 @@ li a{
 li.lettre#visible:after{
   background-color: green;
 }
-  
-
-/* Pb du petit point (avec after) (a cause du texte je crois) */
-
-/* .pendu .lependu img{
-  max-height: 50%;
-} */
 
 .pendu{
   max-height: 60vh;
@@ -150,11 +143,16 @@ li.lettre#visible:after{
 }
 
 .pendu ul ol{
-  visibility: hidden;
+  /* visibility: hidden; */
+  filter: grayscale(100%); /* Applique un filtre gris à 100% */
+  opacity: 0.4; /* Ajoute une transparence à 70% (ajustez selon vos préférences) */
 }
 
 .pendu ul ol.visible{
-  visibility: visible;
+  /* visibility: visible; */
+  filter: none;
+  opacity: 100;
+  
 }
 
 #playerScore{
