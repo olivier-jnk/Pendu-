@@ -1,8 +1,5 @@
-// Remettre de l'ordre dans tout ce raffut.
-
 // Des que la page charge lancer les deux fonctions.
 document.addEventListener('DOMContentLoaded', function() {
-
   debutDePartie ();
   createAlphabet ();
 });
@@ -78,7 +75,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Definir une liste de mots pour le pendu
+// Definir une liste de mots pour le pendu.
 let mots = [ 
   "ephemere", "quintessence", "luminiscence", "ubiquite", "syzygie", "effervescent", "ethere", "selenite", "alacrite", "vernissage", 
   "kaleidoscope", "melliflue", "equivoque", "palimpseste", "onomatopee", "ubuesque", "capricieux", "insouciance", "eclatant", "nacre", 
@@ -92,12 +89,10 @@ function choisirMotAleatoire(mots) {
   if (!mots || mots.length === 0) {
       return "Aucun mot disponible";
   }
-
-  // peut etre revoir le random.
+  //Revoir random ?
   const indexAleatoire = Math.floor(Math.random() * mots.length);
   const motAleatoire = mots[indexAleatoire];
   return motAleatoire;
-  
 };
 
 function motChoix() {
@@ -183,13 +178,10 @@ function motPop () {
  // Parcours de chaque lettre du mot et création d'une balise li
  for (let i = 0; i < motAsplit.length; i++) {
     let lettre = motAsplit[i];
-
     let li = document.createElement('li');
-
     li.textContent = lettre;
     li.id = (lettre);
     li.classList.add("lettre");
-
     maListe.appendChild(li);
  }
 }
