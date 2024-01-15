@@ -95,8 +95,12 @@ li.lettre#visible:after{
 }
 
 .pendu{
-  max-height: 60vh;
+  min-height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 }
+
 
 .pendu ul{
   position: relative;
@@ -104,54 +108,154 @@ li.lettre#visible:after{
   z-index: 0;
 }
 
-.pendu ul ol.un img{
+/* .pendu ul ol.un img{
   position: absolute;
   left: 8.3%;
   bottom: 15%;
+} */
+
+/* .pendu ul ol.un img {
+  position: absolute;
+  left: 8.3%;
+  bottom: 15%;
+  height: auto;
+  width: 20vw;
+} */
+
+.pendu ul ol.un img {
+  position: absolute;
+  left: 8.3%;
+  bottom: 15%;
+  height: 15px;
+  width: 305px;
 }
 
-.pendu ul ol.deux img{
+/* .pendu ul ol.deux img{
   position: absolute;
   left: 16.3%;
   bottom: 40%;
+} */
+
+/* .pendu ul ol.deux img {
+  position: absolute;
+  left: 16.3%;
+  bottom: 40%;
+  height: 60vh;
+} */
+.pendu ul ol.deux img {
+  position: absolute;
+  left: 16.3%;
+  bottom: 40%;
+  width: 15px;
+  height: 350px;
 }
 
-.pendu ul ol.trois img{
+/* .pendu ul ol.trois img{
   position: absolute;
   left: 20.3%;
   bottom: 40%;
+} */
+
+/* .pendu ul ol.trois img {
+  position: absolute;
+  bottom: 40;
+  width: 16vw;
+  bottom: 1970%;
+  left: 16%;
+} */
+
+.pendu ul ol.trois img {
+  position: absolute;
+  bottom: 40;
+  width: 190px;
+  height: 45px;
+  bottom: 1720%;
+  left: 13%;
 }
 
-.pendu ul ol.quatre img{
+/* .pendu ul ol.quatre img{
   position: absolute;
   left: 20.3%;
   bottom: 27%;
-  /* height: 596px;
-  width: 842px; */
+
+} */
+
+/* .pendu ul ol.quatre img {
+  position: absolute;
+  left: 65.3%;
+  bottom: 1570%;
+  width: 6vw;
+} */
+
+.pendu ul ol.quatre img {
+  position: absolute;
+  left: 46.3%;
+  bottom: 1369%;
+  width: 80px;
+  height: 75px;
 }
 
-.pendu ul ol.cinq img{
+/* .pendu ul ol.cinq img{
   position: absolute;
   left: 20.3%;
   bottom: 14%;
+} */
+
+/* .pendu ul ol.cinq img {
+  position: absolute;
+  left: 74.3%;
+  bottom: 675%;
+  height: 26vh;
+} */
+
+.pendu ul ol.cinq img {
+  position: absolute;
+  left: 55.3%;
+  bottom: 849%;
+  width: 15px;
+  height: 105px;
 }
 
-.pendu ul ol.six img{
+/* .pendu ul ol.six img{
   position: absolute;
   left: 20.1%;
   bottom: 15%;
+} */
+
+/* .pendu ul ol.six img {
+  position: absolute;
+  left: 53.1%;
+  bottom: 1000%;
+  width: 12vw;
+} */
+
+.pendu ul ol.six img {
+  position: absolute;
+  left: 42.1%;
+  bottom: 1092%;
+  width: 115px;
+  height: 55px;
 }
 
+.pendu ul ol.sept img {
+  position: absolute;
+  left: 20.1%;
+  bottom: 1092%;
+  width: 115px;
+  height: 55px;
+}
+
+
 .pendu ul ol{
-  /* visibility: hidden; */
-  filter: grayscale(100%); /* Applique un filtre gris à 100% */
-  opacity: 0.4; /* Ajoute une transparence à 70% (ajustez selon vos préférences) */
+  visibility: hidden;
+  /* filter: grayscale(100%);
+  opacity: 0.4;  */
 }
 
 .pendu ul ol.visible{
-  /* visibility: visible; */
-  filter: none;
-  opacity: 100;
+  visibility: visible;
+  /* filter: none;
+  opacity: 100; */
   
 }
 

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 75">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        stroke-width: 0px;
+      }
+
+      .cls-2, .cls-3 {
+        fill: #d84e4e;
+      }
+
+      .cls-3 {
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 3px;
+      }
+    </style>
+  </defs>
+  <ellipse class="cls-2" cx="40.13" cy="37.31" rx="38" ry="34.5"/>
+  <path class="cls-3" d="M22.13,52.81c0-1,21-9,34-3"/>
+  <circle class="cls-1" cx="24.13" cy="27.81" r="4.5"/>
+  <ellipse class="cls-1" cx="50.63" cy="25.81" rx="7.5" ry="6"/>
+</svg>

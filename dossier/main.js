@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (points === motAsplit.length){
           winGame ();
         }else if (vies < 1){ 
-          alert('Le mot etait : ' + motAsplit.join)
+          alert('Le mot etait : ' + motAsplit.join(""))
           window.location.href = "partie.html";
         }
       }     
