@@ -5,6 +5,17 @@ body{
   align-items: center;
 }
 
+.choixTheme{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.choixTheme button{
+  width: 40vw;
+  height: 40vh;
+}
+
 ul{
     display: flex;
     gap: 10px;

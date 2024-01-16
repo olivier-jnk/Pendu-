@@ -1,8 +1,9 @@
-// Des que la page charge lancer les deux fonctions.
-document.addEventListener('DOMContentLoaded', function() {
-  debutDePartie ();
-  createAlphabet ();
-});
+// // Des que la page charge lancer les deux fonctions.
+// document.addEventListener('DOMContentLoaded', function() {
+  
+// });
+
+
 
 // Fonction pour la victoire du joueur.
 function winGame () {
@@ -15,10 +16,6 @@ function showScore () {
   let score = vies * 7;
   let playerScore = document.getElementById('playerScore')
   playerScore.innerHTML = 'Votre score est de ' + score;
-}
-
-function debutDePartie () {
-  motPop ();
 }
 
 let partie = "off"
@@ -43,45 +40,96 @@ function createAlphabet () {
     let li = document.createElement('button');
     li.classList.add('lettrea');
     li.id = idletter // ?
-    li.textContent = (lettrea)     
-    monAlphabet.appendChild(li);
-  }
-}
-
-document.addEventListener('DOMContentLoaded', function() {
-  var boutons = document.querySelectorAll('.lettrea');
-
-  boutons.forEach(function(bouton) {
-    bouton.addEventListener('click', function() {
-
-      valeurElementClique = bouton.textContent;
-
-      if (bouton.classList.contains('lettrea')){
-        verifierCorrespondance ();
+    li.textContent = (lettrea)
+    // A set proprement. + prendre en compte retrait de click si buttonLettre est plus actif.
+    li.addEventListener ('click', function() {
+      console.log('clicked')
+      if (li.classList.contains('lettrea')){
+        console.log('lettreActive')
+        verifierCorrespondance (lettrea);
         console.log(vies + 'vies')
-        // let score = vies * 7;
-        // console.log(score + 'score')
-
+        let score = vies * 7;
+        console.log(score + 'score')
         if (points === motAsplit.length){
           winGame ();
         }else if (vies < 1){ 
           alert('Le mot etait : ' + motAsplit.join(""))
           window.location.href = "partie.html";
         }
-      }     
-    });
-  });
-});
+      }  
+
+    }) 
+    monAlphabet.appendChild(li);
+  }
+}
+
+
 
 // Definir une liste de mots pour le pendu.
-let mots = [ 
-  "ephemere", "quintessence", "luminiscence", "ubiquite", "syzygie", "effervescent", "ethere", "selenite", "alacrite", "vernissage", 
+
+let motsTheme = {
+  classique:["ephemere", "quintessence", "luminiscence", "ubiquite", "syzygie", "effervescent", "ethere", "selenite", "alacrite", "vernissage", 
   "kaleidoscope", "melliflue", "equivoque", "palimpseste", "onomatopee", "ubuesque", "capricieux", "insouciance", "eclatant", "nacre", 
   "flibustier", "effluve", "opalescent", "sibyllin", "quasar", "serenite", "symbiose", "volupte", "iridescence", "intrication", 
   "vagabond", "zenith", "incandescent", "chiaroscuro", "labyrinthe", "petillement", "rhizome", "oxymore", "eclipsant", 
   "pyrrhique", "infini", "ecliptique", "nebuleuse", "volubile", "lithosphere", "plenitude", "effluves", "ephemeride", 
-  "atemporel", "pavonner"
-];
+  "atemporel", "pavonner"],
+  espace: [
+    "asteroide", "galaxie", "cosmique", "exoplanete", "zenithal", 
+    "nebuleuse", "sideral", "pulsar", "astral", "orbite", 
+    "constellation", "plasmasphere", "astronaute", "elliptique", "heliosphere", 
+    "quasar", "interstellaire", "chromosphere", "magnetar", "astrosismologie", 
+    "vortex", "parallaxe", "geocroiseur", "perihelie", "micropesanteur", 
+    "telescope", "rayonnement", "graviton", "antimatiere", "spatiotemporel", 
+    "supernova", "tachyon", "astronomie", "planetaire", "rayonner", 
+    "ecliptique", "astrolabe", "meteorite", "celeste", "equateur", 
+    "penombre", "astrosphere", "heliopause", "galactique", "etoile filante", 
+    "pesanteur", "atmosphere", "astronaviguer", "systeme solaire", "eclipsique"
+  ],
+  nature: [
+    "sylvestre", "cascade", "emeraude", "canopee", "ephemere",
+    "cristallin", "riviere", "eclosion", "brume", "abyssal",
+    "eclatant", "aurore", "equinoxe", "luminescent", "serenite",
+    "zenith", "floral", "cascades", "silhouette", "mystique",
+    "rocher", "verdoyant", "torrent", "celeste", "paletuvier",
+    "bucolique", "ruisseau", "oasis", "montagnes", "etincelant",
+    "frondaison", "eclectique", "iridescent", "torrentiel", "ondulant",
+    "ethere", "crispant", "lacustre", "apaisant", "soleil",
+    "ecorce", "faune", "givre", "sylve", "aquifere",
+    "vent", "harmonie", "gazouillis", "torrentueux", "fougere"
+  ],
+  test: [
+    "test"
+  ]
+  //Inclure description dans chaque mot.
+};
+
+let theme = motsTheme.classique;
+
+function choixTheme(theme){
+  theme = motsTheme[theme]
+  console.log(theme)
+  debutDePartie ();
+  createAlphabet ();
+  // Envoyer en parametre theme à motChoix.
+}
+
+function debutDePartie () {
+  const buttonsChoixS = document.getElementById('buttonsTheme')
+  buttonsChoixS.remove();
+  motPop ();
+}
+
+// let mots = [ 
+//   "ephemere", "quintessence", "luminiscence", "ubiquite", "syzygie", "effervescent", "ethere", "selenite", "alacrite", "vernissage", 
+//   "kaleidoscope", "melliflue", "equivoque", "palimpseste", "onomatopee", "ubuesque", "capricieux", "insouciance", "eclatant", "nacre", 
+//   "flibustier", "effluve", "opalescent", "sibyllin", "quasar", "serenite", "symbiose", "volupte", "iridescence", "intrication", 
+//   "vagabond", "zenith", "incandescent", "chiaroscuro", "labyrinthe", "petillement", "rhizome", "oxymore", "eclipsant", 
+//   "pyrrhique", "infini", "ecliptique", "nebuleuse", "volubile", "lithosphere", "plenitude", "effluves", "ephemeride", 
+//   "atemporel", "pavonner"
+// ];
+
+// let theme = motsTheme.motsJean;
 
 function choisirMotAleatoire(mots) {
   if (!mots || mots.length === 0) {
@@ -94,8 +142,9 @@ function choisirMotAleatoire(mots) {
 };
 
 function motChoix() {
-  let motChoisi = choisirMotAleatoire(mots);
+  let motChoisi = choisirMotAleatoire(theme);
   let motAsplit = motChoisi.split('')
+  console.log(motAsplit + "LE MOT ASPLIT")
   return motAsplit;
 }
 motAsplit = motChoix();
@@ -104,7 +153,7 @@ motAsplit = motChoix();
 // Moyen peut etre de regrouper les deux fonction précédentes ?
 
 // Fonction pour vérifier la correspondance entre la lettre cliquée et les lettres du motAsplit
-function verifierCorrespondance() {
+function verifierCorrespondance(valeurElementClique) {
   valeur1 = 0
   for (let i = 0; i < motAsplit.length; i++) {
     if (valeurElementClique === motAsplit[i]) {    
