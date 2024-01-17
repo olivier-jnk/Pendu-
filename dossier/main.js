@@ -1,11 +1,3 @@
-// // Des que la page charge lancer les deux fonctions.
-// document.addEventListener('DOMContentLoaded', function() {
-  
-// });
-
-
-
-// Fonction pour la victoire du joueur.
 function winGame () {
   console.log('gagné !')
   popwin();
@@ -20,6 +12,7 @@ function showScore () {
 
 let partie = "off"
 let vies = 7
+
 
 var points = 0; 
 var className = 0;
@@ -104,15 +97,25 @@ let motsTheme = {
   //Inclure description dans chaque mot.
 };
 
-let theme = motsTheme.classique;
+// let leTheme = {
+//   valeur: 0,
+// };
+
+// let theme = motsTheme.classique;
+
+// let theme;
 
 function choixTheme(theme){
   theme = motsTheme[theme]
+  console.log(theme + 'Ceci est le theme')
+  // let leTheme.valeur = theme;
   console.log(theme)
   debutDePartie ();
   createAlphabet ();
   // Envoyer en parametre theme à motChoix.
 }
+
+let theme = motsTheme.test;
 
 function debutDePartie () {
   const buttonsChoixS = document.getElementById('buttonsTheme')
@@ -129,7 +132,7 @@ function debutDePartie () {
 //   "atemporel", "pavonner"
 // ];
 
-// let theme = motsTheme.motsJean;
+
 
 function choisirMotAleatoire(mots) {
   if (!mots || mots.length === 0) {
@@ -148,6 +151,7 @@ function motChoix() {
   return motAsplit;
 }
 motAsplit = motChoix();
+
 // console.log(motAsplit)
 // pas meilleure manière pour recuperer motAsplit. le passer en paramètres ?
 // Moyen peut etre de regrouper les deux fonction précédentes ?
