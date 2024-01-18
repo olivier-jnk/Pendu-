@@ -101,21 +101,44 @@ let motsTheme = {
 //   valeur: 0,
 // };
 
-// let theme = motsTheme.classique;
+let themeAHA = motsTheme.classique;
 
 // let theme;
 
-function choixTheme(theme){
-  theme = motsTheme[theme]
-  console.log(theme + 'Ceci est le theme')
-  // let leTheme.valeur = theme;
-  console.log(theme)
-  debutDePartie ();
+let themedeV = motsTheme.classique;
+
+function lancement (themedeVr){
+  debutDePartie (); // Insérer dans début de partie puis mot pop.
   createAlphabet ();
+  themedeV = themedeVr;
+}
+
+function choixTheme(theme){
+  let themeV = motsTheme[theme]
+  lancement(themeV)
+  console.log(themeV + 'ceci est themeV')
+  // valeurTheme.Theme = themeV;
+  // console.log(valeurTheme.Theme + 'ceci est valeurTheme.Theme')
+  console.log(themeAHA + 'ceci est theme AHAH')
+  lancement(themeV);
+  
   // Envoyer en parametre theme à motChoix.
 }
 
-let theme = motsTheme.test;
+// let valeurTheme = {}
+// let theme = motsTheme.classique;
+
+// function setValeurTheme(themeLeV){
+//   theme = themeLeV;
+//   return theme;
+// }
+
+
+// probleme est que valeurTheme.Theme ne dépasse pas la fonction choixTheme.
+
+// console.log(valeurTheme.Theme + 'VT.T dans le vide.')
+
+// let theme = motsTheme.test;
 
 function debutDePartie () {
   const buttonsChoixS = document.getElementById('buttonsTheme')
@@ -145,7 +168,8 @@ function choisirMotAleatoire(mots) {
 };
 
 function motChoix() {
-  let motChoisi = choisirMotAleatoire(theme);
+  // console.log(valeurTheme.Theme + 'ValeurTheme.theme dans motChoix.')
+  let motChoisi = choisirMotAleatoire(themedeV);
   let motAsplit = motChoisi.split('')
   console.log(motAsplit + "LE MOT ASPLIT")
   return motAsplit;
