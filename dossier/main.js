@@ -13,7 +13,6 @@ function showScore () {
 let partie = "off"
 let vies = 7
 
-
 var points = 0; 
 var className = 0;
 let alphabet = [];
@@ -24,8 +23,10 @@ for (let i = 97; i <= 122; i++) {
   alphabet.push(String.fromCharCode(i));
 }
 
-function createAlphabet () {
+function createAlphabet (motTheme) {
+  let motAsplit = motTheme;
   let monAlphabet = document.getElementById('monAlphabet');
+  console.log('Create alphabet (qui contient les win et losse est executé.)')
 
   for(i = 0; i < alphabet.length; i++){   
     let lettrea = alphabet[i];
@@ -39,7 +40,7 @@ function createAlphabet () {
       console.log('clicked')
       if (li.classList.contains('lettrea')){
         console.log('lettreActive')
-        verifierCorrespondance (lettrea);
+        verifierCorrespondance (lettrea, motAsplit);
         console.log(vies + 'vies')
         let score = vies * 7;
         console.log(score + 'score')
@@ -107,21 +108,22 @@ let themeAHA = motsTheme.classique;
 
 let themedeV = motsTheme.classique;
 
-function lancement (themedeVr){
-  debutDePartie (); // Insérer dans début de partie puis mot pop.
-  createAlphabet ();
-  themedeV = themedeVr;
+function lancement (leTheme){
+  motChoisiSplit = leTheme;
+  console.log("function lancement lancé")
+  debutDePartie (motChoisiSplit);
+  createAlphabet (motChoisiSplit);
 }
 
 function choixTheme(theme){
-  let themeV = motsTheme[theme]
-  lancement(themeV)
-  console.log(themeV + 'ceci est themeV')
-  // valeurTheme.Theme = themeV;
-  // console.log(valeurTheme.Theme + 'ceci est valeurTheme.Theme')
-  console.log(themeAHA + 'ceci est theme AHAH')
-  lancement(themeV);
+  console.log("function choixTheme lancé")
+  let leTheme = motsTheme[theme]
   
+  let motChoisi = choisirMotAleatoire(leTheme); 
+  let motChoisiSplit = motChoisi.split('')
+
+  console.log(motChoisiSplit + 'motChoisiSplit')
+  lancement(motChoisiSplit) // Lancement de lancement avec envoie en parametre du mot du theme.
   // Envoyer en parametre theme à motChoix.
 }
 
@@ -140,10 +142,11 @@ function choixTheme(theme){
 
 // let theme = motsTheme.test;
 
-function debutDePartie () {
+function debutDePartie (motTheme) {
+  let motChoisiSplit = motTheme;
   const buttonsChoixS = document.getElementById('buttonsTheme')
   buttonsChoixS.remove();
-  motPop ();
+  motPop (motChoisiSplit);
 }
 
 // let mots = [ 
@@ -167,22 +170,25 @@ function choisirMotAleatoire(mots) {
   return motAleatoire;
 };
 
-function motChoix() {
-  // console.log(valeurTheme.Theme + 'ValeurTheme.theme dans motChoix.')
-  let motChoisi = choisirMotAleatoire(themedeV);
-  let motAsplit = motChoisi.split('')
-  console.log(motAsplit + "LE MOT ASPLIT")
-  return motAsplit;
-}
-motAsplit = motChoix();
+// function motChoix() {
+//   console.log('MotChoix LANCE')
+//   // console.log(valeurTheme.Theme + 'ValeurTheme.theme dans motChoix.')
+//   let motChoisi = choisirMotAleatoire(themedeV);
+//   let motAsplit = motChoisi.split('')
+//   console.log(motAsplit + "LE MOT ASPLIT")
+//   return motAsplit;
+// }
+// motAsplit = motChoix();
+//motAsplit = motChoix() lance automatiquement la fonction.
 
 // console.log(motAsplit)
 // pas meilleure manière pour recuperer motAsplit. le passer en paramètres ?
 // Moyen peut etre de regrouper les deux fonction précédentes ?
 
 // Fonction pour vérifier la correspondance entre la lettre cliquée et les lettres du motAsplit
-function verifierCorrespondance(valeurElementClique) {
+function verifierCorrespondance(valeurElementClique, motTheme) {
   valeur1 = 0
+  let motAsplit = motTheme;
   for (let i = 0; i < motAsplit.length; i++) {
     if (valeurElementClique === motAsplit[i]) {    
       console.log(`La lettre ${valeurElementClique} correspond à une lettre dans le tableau.`);
@@ -245,7 +251,8 @@ function addClass() {
   }
 }
 
-function motPop () {
+function motPop (motTheme) {
+  let motAsplit = motTheme;
   // Sélection de l'ul où les balises li seront ajoutées
  let maListe = document.getElementById('maListe');
 
