@@ -1,13 +1,16 @@
-function winGame () {
+function winGame (motHasard) {
+  let motAsplit = motHasard; 
   console.log('gagné !')
   popwin();
-  showScore ();
+  showScore (motAsplit);
 }
 
-function showScore () {
+function showScore (motHasard) {
+  let motAsplit = motHasard; 
   let score = vies * 7;
   let playerScore = document.getElementById('playerScore')
-  playerScore.innerHTML = 'Votre score est de ' + score;
+  playerScore.innerHTML = 'Votre score est de ' + score + " description du mot " + motAsplit.join("") + 
+  " est : " + motsTheme.descriptions[motAsplit.join("")].description ;
 }
 
 let partie = "off"
@@ -17,7 +20,6 @@ var points = 0;
 var className = 0;
 let alphabet = [];
 
-// Systeme de l'alphabet
 
 for (let i = 97; i <= 122; i++) {
   alphabet.push(String.fromCharCode(i));
@@ -26,16 +28,15 @@ for (let i = 97; i <= 122; i++) {
 function createAlphabet (motTheme) {
   let motAsplit = motTheme;
   let monAlphabet = document.getElementById('monAlphabet');
-  console.log('Create alphabet (qui contient les win et losse est executé.)')
 
   for(i = 0; i < alphabet.length; i++){   
     let lettrea = alphabet[i];
     let idletter = (lettrea +'l')   
     let li = document.createElement('button');
     li.classList.add('lettrea');
-    li.id = idletter // ?
+    li.id = idletter
     li.textContent = (lettrea)
-    // A set proprement. + prendre en compte retrait de click si buttonLettre est plus actif.
+
     li.addEventListener ('click', function() {
       console.log('clicked')
       if (li.classList.contains('lettrea')){
@@ -45,24 +46,21 @@ function createAlphabet (motTheme) {
         let score = vies * 7;
         console.log(score + 'score')
         if (points === motAsplit.length){
-          winGame ();
+          winGame (motAsplit);
         }else if (vies < 1){ 
           if(motsTheme.descriptions[motAsplit.join("")]){ // Si la description existe
-            alert('Le mot etait : ' + motAsplit.join("")+ 
+            alert('PERDU ! \n Le mot etait : ' + motAsplit.join("")+ 
             " description : " + motsTheme.descriptions[motAsplit.join("")].description)
           }else{ // Si il n'y a pas de description au mot. 
-            alert('Le mot etait : ' + motAsplit.join(""))
+            alert('PERDU ! \n Le mot etait : ' + motAsplit.join(""))
           };
           window.location.href = "partie.html";
         }
       }  
-
     }) 
     monAlphabet.appendChild(li);
   }
 }
-
-
 
 // Definir une liste de mots pour le pendu.
 
@@ -105,40 +103,25 @@ let motsTheme = {
     sylvestre: {mot: "sylvestre", description: "Relatif, propre aux forêts, aux bois."},
     mystique: {mot: "mystique", description: "Relatif à des expériences spirituelles ou à des réalités supérieures."},
     paletuvier: {mot: "paltuvier", description: "Relatif à des expériences spirituelles ou à des réalités supérieures."},
-
     // Mettre la description de chaque mot. + lien vers des sources plus précises et détaillées sur le mot ?
     // Surement mieux de mettre ce systeme en place dès le tableau de mots, ca peut éviter de trop en rajouter.
   }
-    
-
-  //Inclure description dans chaque mot.
 };
-
-let themeAHA = motsTheme.classique;
-
-// let theme;
-
-let themedeV = motsTheme.classique;
 
 function lancement (leTheme){
   motChoisiSplit = leTheme;
-  console.log("function lancement lancé")
   debutDePartie (motChoisiSplit);
   createAlphabet (motChoisiSplit);
 }
 
 function choixTheme(theme){
-  console.log("function choixTheme lancé")
   let leTheme = motsTheme[theme]
   
   let motChoisi = choisirMotAleatoire(leTheme); 
   let motChoisiSplit = motChoisi.split('')
   // Ce serait beaucoup plus simple si leTheme et motChoisiSplit etait directement accessible de toutes les variables. choix theme = geante fonction
   // Qui englobe toutes les autres ?
-
-  console.log(motChoisiSplit + 'motChoisiSplit')
   lancement(motChoisiSplit) // Lancement de lancement avec envoie en parametre du mot du theme.
-  // Envoyer en parametre theme à motChoix.
 }
 
 function debutDePartie (motTheme) {
@@ -180,7 +163,7 @@ function verifierCorrespondance(valeurElementClique, motTheme) {
 
   if (valeur1 > 0){
     valeur1 = 0;
-    console.log(points)
+
   }else {
     console.log(`La lettre ${valeurElementClique} ne correspond à aucune lettre dans le tableau.`);
     vies -= 1;
@@ -239,6 +222,8 @@ function motPop (motTheme) {
  }
 }
 
+// Fenetre modulable de win. 
+
 function popwin (){
   document.getElementById('myModal').style.display = 'block';
   document.body.style.overflow = 'hidden'; 
@@ -257,13 +242,15 @@ window.addEventListener('click', function(event) {
 });
 
 //Mot qui s'affiche à la fin avec une description, voir des illustration... Si la personne perd mais si elle gagne aussi. 
-// Au début afficher juste le mot. et la personne peut choisir de voir la description.
+// Au début afficher juste le mot. et la personne peut choisir de voir la description ?
 
 //Indications sur le score. + score cumulé, enchainement de partie ?
 
-// choix de theme de mot au début du jeu.
+//Modifier le design ? du pendu, la taille qu'il prend. et ajouter prévisualisation semi-transparente. + ameliorer Responsive. 
 
-//Modifier le design ? du pendu, la taille qu'il prend. et ajouter prévisualisation semi-transparente.
+// Pb.quand la fenetre modulable est fermé avec la croix la partie précédente reprend.
+
+// Mettre le choix de theme sur une autre page ou masquer le pendu au début mais ne pas laisser comme ca.
 
 //
  
