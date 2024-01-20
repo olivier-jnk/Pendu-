@@ -47,7 +47,12 @@ function createAlphabet (motTheme) {
         if (points === motAsplit.length){
           winGame ();
         }else if (vies < 1){ 
-          alert('Le mot etait : ' + motAsplit.join(""))
+          if(motsTheme.descriptions[motAsplit.join("")]){ // Si la description existe
+            alert('Le mot etait : ' + motAsplit.join("")+ 
+            " description : " + motsTheme.descriptions[motAsplit.join("")].description)
+          }else{ // Si il n'y a pas de description au mot. 
+            alert('Le mot etait : ' + motAsplit.join(""))
+          };
           window.location.href = "partie.html";
         }
       }  
@@ -94,13 +99,20 @@ let motsTheme = {
   ],
   test: [
     "test"
-  ]
+  ],
+  descriptions:{
+    test: { mot: "test", description: "Ceci est la description de test" }, 
+    sylvestre: {mot: "sylvestre", description: "Relatif, propre aux forêts, aux bois."},
+    mystique: {mot: "mystique", description: "Relatif à des expériences spirituelles ou à des réalités supérieures."},
+    paletuvier: {mot: "paltuvier", description: "Relatif à des expériences spirituelles ou à des réalités supérieures."},
+
+    // Mettre la description de chaque mot. + lien vers des sources plus précises et détaillées sur le mot ?
+    // Surement mieux de mettre ce systeme en place dès le tableau de mots, ca peut éviter de trop en rajouter.
+  }
+    
+
   //Inclure description dans chaque mot.
 };
-
-// let leTheme = {
-//   valeur: 0,
-// };
 
 let themeAHA = motsTheme.classique;
 
@@ -121,26 +133,13 @@ function choixTheme(theme){
   
   let motChoisi = choisirMotAleatoire(leTheme); 
   let motChoisiSplit = motChoisi.split('')
+  // Ce serait beaucoup plus simple si leTheme et motChoisiSplit etait directement accessible de toutes les variables. choix theme = geante fonction
+  // Qui englobe toutes les autres ?
 
   console.log(motChoisiSplit + 'motChoisiSplit')
   lancement(motChoisiSplit) // Lancement de lancement avec envoie en parametre du mot du theme.
   // Envoyer en parametre theme à motChoix.
 }
-
-// let valeurTheme = {}
-// let theme = motsTheme.classique;
-
-// function setValeurTheme(themeLeV){
-//   theme = themeLeV;
-//   return theme;
-// }
-
-
-// probleme est que valeurTheme.Theme ne dépasse pas la fonction choixTheme.
-
-// console.log(valeurTheme.Theme + 'VT.T dans le vide.')
-
-// let theme = motsTheme.test;
 
 function debutDePartie (motTheme) {
   let motChoisiSplit = motTheme;
@@ -148,17 +147,6 @@ function debutDePartie (motTheme) {
   buttonsChoixS.remove();
   motPop (motChoisiSplit);
 }
-
-// let mots = [ 
-//   "ephemere", "quintessence", "luminiscence", "ubiquite", "syzygie", "effervescent", "ethere", "selenite", "alacrite", "vernissage", 
-//   "kaleidoscope", "melliflue", "equivoque", "palimpseste", "onomatopee", "ubuesque", "capricieux", "insouciance", "eclatant", "nacre", 
-//   "flibustier", "effluve", "opalescent", "sibyllin", "quasar", "serenite", "symbiose", "volupte", "iridescence", "intrication", 
-//   "vagabond", "zenith", "incandescent", "chiaroscuro", "labyrinthe", "petillement", "rhizome", "oxymore", "eclipsant", 
-//   "pyrrhique", "infini", "ecliptique", "nebuleuse", "volubile", "lithosphere", "plenitude", "effluves", "ephemeride", 
-//   "atemporel", "pavonner"
-// ];
-
-
 
 function choisirMotAleatoire(mots) {
   if (!mots || mots.length === 0) {
@@ -170,22 +158,6 @@ function choisirMotAleatoire(mots) {
   return motAleatoire;
 };
 
-// function motChoix() {
-//   console.log('MotChoix LANCE')
-//   // console.log(valeurTheme.Theme + 'ValeurTheme.theme dans motChoix.')
-//   let motChoisi = choisirMotAleatoire(themedeV);
-//   let motAsplit = motChoisi.split('')
-//   console.log(motAsplit + "LE MOT ASPLIT")
-//   return motAsplit;
-// }
-// motAsplit = motChoix();
-//motAsplit = motChoix() lance automatiquement la fonction.
-
-// console.log(motAsplit)
-// pas meilleure manière pour recuperer motAsplit. le passer en paramètres ?
-// Moyen peut etre de regrouper les deux fonction précédentes ?
-
-// Fonction pour vérifier la correspondance entre la lettre cliquée et les lettres du motAsplit
 function verifierCorrespondance(valeurElementClique, motTheme) {
   valeur1 = 0
   let motAsplit = motTheme;
