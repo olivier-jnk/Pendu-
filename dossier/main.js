@@ -116,6 +116,7 @@ function lancement (leTheme){
 
 function choixTheme(theme){
   let leTheme = motsTheme[theme]
+  var theme = theme;
   
   let motChoisi = choisirMotAleatoire(leTheme); 
   let motChoisiSplit = motChoisi.split('')
@@ -232,6 +233,8 @@ function popwin (){
 document.getElementsByClassName('close')[0].addEventListener('click', function() {
   document.getElementById('myModal').style.display = 'none';
   document.body.style.overflow = 'auto';
+  location.reload();
+  choixTheme("espace");
 });
 
 window.addEventListener('click', function(event) {

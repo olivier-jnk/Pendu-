@@ -5,17 +5,15 @@ body{
     height: 90vh;
 }
 
-button{
-
+button {
     padding: 0.2% 1.3%;
     border-radius: 5%;
     background-color: #789461;
-    border: solid 10px #DBE7C9 ;
-    
+    border: solid 2px #DBE7C9;
 }
 
-button:hover{
-    border: solid 10px #789461;
+button:hover {
+    border: solid 2px #789461;
     background-color: #DBE7C9;
 }
 
@@ -24,5 +22,4 @@ button a{
     text-decoration: none;
     color: black;
     font-weight: 900;
-    
 }
