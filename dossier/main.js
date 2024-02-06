@@ -209,10 +209,9 @@ function addClass() {
 
 function motPop (motTheme) {
   let motAsplit = motTheme;
-  // Sélection de l'ul où les balises li seront ajoutées
+
  let maListe = document.getElementById('maListe');
 
- // Parcours de chaque lettre du mot et création d'une balise li
  for (let i = 0; i < motAsplit.length; i++) {
     let lettre = motAsplit[i];
     let li = document.createElement('li');
